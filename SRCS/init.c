@@ -15,15 +15,19 @@
 //mira de que fractal se trata i segun el nombre le asigna unos valores o otros
 void	init_fractal (t_data *data, char **argv)
 {
-	(void)argv;
+	//(void)argv;
 	ft_printf("INIT FRACTAL\n");
 	if (!strncmp(data->name, "mandelbrot", 0xFFFFFFFF))
 	{
-		ft_printf("Compare funciona\n");
+		(void)argv;
+		ft_printf("Compare funciona, detecta mandelbrot\n");
 		init_mandelbrot(data);
 	}
-//	else if (strncmp(data->name, "julia", 0xFFFFFFFF))
-//		init_julia(data, argv);
+	if (!strncmp(data->name, "julia", 0xFFFFFFFF))
+	{
+		ft_printf("Compare funciona, detecta julia\n");
+		init_julia(data, argv);
+	}
 }
 
 int	create_window(t_data *data)
@@ -43,3 +47,28 @@ int	create_window(t_data *data)
 		return (0);
 	return (1);
 }
+
+/*double	ft_atod(char *str)
+{
+	int		i;
+	double	num;
+	int		len;
+
+	num = 0.0;
+	i = 1;
+	if (*str == '-')
+	{
+		i *= -1;
+		str++;
+	}
+	len = strlen(str);
+	while (len > 0)
+	{
+		len--;
+		num = str[len];
+		num``
+		10 * len;
+
+	}
+	return ();
+}*/

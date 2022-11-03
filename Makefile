@@ -44,7 +44,7 @@ DIR_OBJS = OBJS
 
 #FILES
 
-SRCS = main.c mandelbrot.c key.c drawer.c init.c
+SRCS = main.c mandelbrot.c key.c drawer.c init.c mouse.c julia.c errors.c logs.c
 
 #VARIABLES
 

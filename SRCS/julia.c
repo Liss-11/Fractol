@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 15:46:39 by afrolova          #+#    #+#             */
-/*   Updated: 2022/10/26 15:47:04 by afrolova         ###   ########.fr       */
+/*   Created: 2022/11/02 19:15:03 by afrolova          #+#    #+#             */
+/*   Updated: 2022/11/02 19:15:08 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_mandelbrot(t_data *data)
+void	init_julia(t_data *data, char **argv)
 {
+	if (argv[2] && argv[3])
+	{
+		data->c.r = ft_atoi(argv[2]);
+		ft_printf("%d\n", ft_atoi(argv[2]));
+		data->c.i = ft_atoi(argv[3]);
+		ft_printf("%d\n", ft_atoi(argv[3]));
+	}
+	else
+	{
+		data->c.r = -0.7;
+		data->c.i = 0.27015;
+	}
 	data->zoom = 1.0;
-	data->center.x = -0.5;
+	data->center.x = 0.0;
 	data->center.y = 0.0;
-	data->c.r = 0.0;
-	data->c.i = 0.0;
 	data->z.x = 0.0;
-	data->z.y= 0.0;
+	data->z.y = 0.0;
 	data->tmp.x = 0.0;
-	data->tmp.y = 0.0;
+	data->tmp.y= 0.0;
 }
 
-void	mandelbrot(t_data *data)
+void	julia(t_data *data)
 {
 	int color;
 	int	i;
@@ -36,22 +46,21 @@ void	mandelbrot(t_data *data)
 		data->px.x = -1;
 		while (++data->px.x < WIDTH)
 		{
-			data->c.r = 1.5 * (data->px.x - WIDTH / 2) / (0.4 * data->zoom * WIDTH) + data->center.x;
-			data->c.i = 1.0 * (data->px.y - HEIGHT / 2) / (0.4 * data->zoom * HEIGHT) + data->center.y;
+			data->z.x = 1.5 * (data->px.x - WIDTH / 2) / (0.4 * data->zoom * WIDTH) + data->center.x;
+			data->z.y = 1.0 * (data->px.y - HEIGHT / 2) / (0.4 * data->zoom * HEIGHT) + data->center.y;
 		
 			i = MAX_ITER + data->zoom;
-			color = mandelbrot_drawer(data, i);
+			color = julia_drawer(data, i);
 			my_mlx_pixel_put(data, data->px.x, data->px.y, color);
 		}
 	}
 }
 
-int	mandelbrot_drawer(t_data *data, int i)
+int	julia_drawer(t_data *data, int i)
 {
+	
 	int		color;
 
-	data->z.x = data->c.r;
-	data->z.y = data->c.i;
 	while ((((data->z.x * data->z.x) + (data->z.y * data->z.y)) < 4) && i >= 1)
 	{
 		data->tmp.x = data->z.x;

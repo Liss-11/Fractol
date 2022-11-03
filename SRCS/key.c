@@ -19,11 +19,12 @@ static int	key_enter1(int key, t_data *data)
 		data->zoom *= 1.15;
 	else if (key == MINUS)
 		data->zoom /= 1.15;
-	
-/*	else if(key == 2)
+	else if(key == 8)
 	{
-		init_mandelbrot();
-	}*/
+		data->zoom = 1.0;
+		data->center.x = -0.5;
+		data->center.y = 0.0;
+	}
 
 	drawer(data);
 	return (0);
@@ -32,7 +33,7 @@ static int	key_enter1(int key, t_data *data)
 
 int	key_enter(int key, t_data *data)
 {
-	if (key == ESC)
+	if (key == ESC || key == 17)
 		end_all(data);
 	//llama la funcio de salir y cerrar todo
 	else if (key == ARROW_UP)

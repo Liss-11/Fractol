@@ -20,13 +20,6 @@
 # include "../LIB/LIBFT_PRINTF/INC/ft_printf.h"
 # include "../LIB/LIBFT_PRINTF/Libft/INC/libft.h"
 
-# define COLOR(R, G, B) (((256 + (R)) * 256 + (G)) * 256 + (B))
-# define RGBA(A, R, G, B) (((A) * ((256 + (R)) * 256 + (G))) * 256 + (B))
-# define RANGE_CHANGE(x,a,b,min,max) (((b)-(a))*((x)-(min))/((max)-(min)))+(a)
-# define RESIZE(x, min, max, a, b) ((x) * ((min) / (max) * ((b) - (a))) + (a))
-
-# define SQR(n) (n * n)
-
 # define M "mandelbrot"
 # define J "julia"
 
@@ -86,12 +79,12 @@ typedef struct	s_data {
 	int			bpp;
 	int			llen;
 	int			endian;
-	t_point		max;
-	t_point		min;
+//	t_point		max;
+//	t_point		min;
 	t_point		center;
 	t_points	c;
 	t_point		z;
-	t_point		tmpz;
+	t_point		tmp;
 	double		zoom;
 	double		x_new;
 }				t_data;
@@ -99,7 +92,12 @@ typedef struct	s_data {
 //mandelbrot.c
 void	init_mandelbrot(t_data *data);
 void	mandelbrot(t_data *data);
-int		mandelbrot_drawer(t_data *data, int iter);
+int		mandelbrot_drawer(t_data *data, int i);
+
+//julia.c
+void	init_julia(t_data *data, char **argv);
+void	julia(t_data *data);
+int		julia_drawer(t_data *data, int i);
 
 //drawer.c
 void	drawer(t_data *data);
@@ -108,12 +106,13 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 //main.c
 int		main(int argc, char **argv);
-int		init_program(char **argv, char *name);
+int		init_program(char **argv);
 int		execute_program(t_data *data);
-int	end_all(t_data *data);
+int		end_all(t_data *data);
+void	view_options();
 
-//void	usage(void);
-void	end_fractol(t_data *data);
+//errors.c
+int		check_errors(int argc, char **argv);
 
 //init.c
 void	init_fractal (t_data *data, char **argv);
@@ -121,10 +120,15 @@ int		create_window(t_data *data);
 
 //key.c
 
-int	key_enter(int key, t_data *data);
+int		key_enter(int key, t_data *data);
 
-//mandelbrot.c
+//mouse.c
 
-void	init_mandelbrot(t_data *data);
+int		mouse_scroll(int key, int x, int y, t_data *data);
+
+//logs.c
+void	invalid_input(void);
+void	invalid_julia_param_input(void);
+
 
 #endif
