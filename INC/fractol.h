@@ -30,6 +30,8 @@
 # define MAX_SIZE 4
 # define MLX_ERROR -1
 # define K_RETURN 36
+# define TRUE 1
+# define FALSE 0
 
 //MOVMENTS
 
@@ -72,21 +74,20 @@ typedef	struct	s_pixel
 typedef struct	s_data {
 	void		*mlx;
 	void		*win;
-	char		*name;
+	char		name;
 	void		*img;
 	char		*buffer;
 	t_pixel		px;
 	int			bpp;
 	int			llen;
 	int			endian;
-//	t_point		max;
-//	t_point		min;
 	t_point		center;
 	t_points	c;
 	t_point		z;
 	t_point		tmp;
 	double		zoom;
 	double		x_new;
+	int			shift;		
 }				t_data;
 
 //mandelbrot.c
@@ -120,7 +121,8 @@ int		create_window(t_data *data);
 
 //key.c
 
-int		key_enter(int key, t_data *data);
+int		mlx_keyrelase(int key, t_data *data);
+int		key_press(int key, t_data *data);
 
 //mouse.c
 

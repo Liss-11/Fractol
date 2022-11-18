@@ -28,7 +28,10 @@ int	init_program(char **argv)
 {
 	t_data data;
 
-	data.name = argv[1];
+	if (!strncmp(argv[1], "j", 0xFFFFFFFF))
+		data.name = 'j';
+	else if (!strncmp(argv[1], "m", 0xFFFFFFFF))
+		data.name = 'm';
 	ft_printf("Init programm, the name is: %s\n", data.name);
 
 	init_fractal(&data, argv);
@@ -43,9 +46,16 @@ int	execute_program(t_data *data)
 {
 	ft_printf("I'm executing the program\n");
 	drawer(data);
-	mlx_hook(data->win, 2, 0, key_enter, data);
+	mlx_hook(data->win, 2, 0, key_press, data);
+	mlx_hook(data->win, 3, 0, mlx_keyrelase, data);
 	mlx_hook(data->win, 4, 0, mouse_scroll, data);
 	mlx_hook(data->win, ON_DESTROY, 0, end_all, data); 
+
+
+//	mlx_loop_hook(data->win, mouse_detector, data);
+
+
+
 	mlx_loop(data->mlx);
 	mlx_destroy_image(data->mlx, data->img);
 	mlx_destroy_window(data->mlx, data->win);
@@ -65,7 +75,7 @@ int	end_all(t_data *data)
 void	view_options()
 {
 	ft_printf("\nWRONG INPUT, eiher use:\n\n");
-	ft_printf("./fractol mandelbrot\t(for Mandelbrot)\n");
-	ft_printf("./fractol julia\t\t(for Julia)\n");
+	ft_printf("./fractol m\t(for Mandelbrot)\n");
+	ft_printf("./fractol j\t\t(for Julia)\n");
 	exit(EXIT_FAILURE);
 }

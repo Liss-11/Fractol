@@ -17,13 +17,13 @@ void	init_fractal (t_data *data, char **argv)
 {
 	//(void)argv;
 	ft_printf("INIT FRACTAL\n");
-	if (!strncmp(data->name, "mandelbrot", 0xFFFFFFFF))
+	if (data->name == 'm')
 	{
 		(void)argv;
 		ft_printf("Compare funciona, detecta mandelbrot\n");
 		init_mandelbrot(data);
 	}
-	if (!strncmp(data->name, "julia", 0xFFFFFFFF))
+	if (data->name == 'j')
 	{
 		ft_printf("Compare funciona, detecta julia\n");
 		init_julia(data, argv);
@@ -35,7 +35,10 @@ int	create_window(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (0);
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, data->name);
+	if (data->name == 'm')
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Mandelbrot");
+	else if (data->name == 'j')
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Julia");
 	if (!data->win)
 		return (0);
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);

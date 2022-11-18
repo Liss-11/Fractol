@@ -12,46 +12,54 @@
 
 #include "fractol.h"
 
+int	mlx_keyrelase(int key, t_data *data)
+{
+	if (key == 257)
+		data->shift = 0;
+	drawer(data);
+	return (1);
+}
+
 //dos funciones que buscar las posibilidades que me pueden llegar por key_press
-static int	key_enter1(int key, t_data *data)
+static int	key_press1(int key, t_data *data)
 {
 	if (key == PLUS)
 		data->zoom *= 1.15;
 	else if (key == MINUS)
 		data->zoom /= 1.15;
-	else if(key == 8)
-	{
-		data->zoom = 1.0;
-		data->center.x = -0.5;
-		data->center.y = 0.0;
+	else if(key == 8){
+		if (data->name == 'm')
+			init_mandelbrot(data);
+		if (data->name == 'j'){
+			data->zoom = 1.0;
+			data->center.x = 0.0;
+			data->center.y = 0.0;
+		}
 	}
-
 	drawer(data);
 	return (0);
 	//salir y cerrar todo
 }
 
-int	key_enter(int key, t_data *data)
+int	key_press(int key, t_data *data)
 {
 	if (key == ESC || key == 17)
 		end_all(data);
-	//llama la funcio de salir y cerrar todo
 	else if (key == ARROW_UP)
 		data->center.y += .2 / data->zoom;
-	//muevo hacia arriba
 	else if (key == ARROW_DOWN)
-	//muevo hacia bajao
 		data->center.y -= .2 / data->zoom;
 	else if (key == ARROW_LEFT)
-	//izquierda
-			data->center.x += .2 / data->zoom;
+		data->center.x += .2 / data->zoom;
 	else if (key == ARROW_RIGHT)
-	//derecha
 		data->center.x -= .2 / data->zoom;
+	else if (key == 257)
+		data->shift = 1;
+
 	else
 	{
 		ft_printf("key %d", key);
-		key_enter1(key, data);
+		key_press1(key, data);
 	}
 	drawer(data);
 	ft_printf("key %d", key);

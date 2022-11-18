@@ -18,9 +18,9 @@ void	drawer(t_data *data)
 {	
 	background(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	if (!strncmp(data->name, "mandelbrot", 0xFFFFFFFF))
+	if (data->name == 'm')
 		mandelbrot(data);
-	else if (!strncmp(data->name, "julia", 0xFFFFFFFF))
+	else if (data->name == 'j')
 		julia(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }

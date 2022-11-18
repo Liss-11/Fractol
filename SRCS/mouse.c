@@ -17,26 +17,40 @@ int		mouse_scroll(int key, int x, int y, t_data *data)
 {
 	(void)x;
 	(void)y;
-	if (key == 5){
-		ft_printf("key em key5: %d\n", key);
+	if (key == 5)
 		data->zoom *= 1.15;
-	}
 	else if (key == 4)
-	{
-		ft_printf("key en key4: %d\n", key);
 		data->zoom /= 1.15;
-	
-	}
-	ft_printf("key: %d\n", key);
 	drawer(data);
 	return (0);
 }
 
-int		mlx_mouse_get_pos(void *win_ptr, int *x, int *y)
+/*int		mouse_detector(t_data *data)
+{
+	int		x;
+	int		y;
+
+	if (data->name == 'j' && fractol->shift_press == 1)
+	{
+		mlx_mouse_get_pos(fractol->screen.win, &x, &y);
+		fractol->setvalue.cx = (double)(x
+				* (4 / fractol->setvalue.zoom)
+				/ W - (2 / fractol->setvalue.zoom));
+		fractol->setvalue.cy = (double)(y
+				* (3 / fractol->setvalue.zoom)
+				/ H - (1.5 / fractol->setvalue.zoom));
+		drawer(fractol);
+	}
+	return (0);
+
+	
+}*/
+
+/*int		mlx_mouse_get_pos(void *win_ptr, int *x, int *y)
 {
 
 	
-}
+}*/
 
 //interesante, para los colores
 
