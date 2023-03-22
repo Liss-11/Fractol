@@ -6,7 +6,7 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:53:19 by afrolova          #+#    #+#             */
-/*   Updated: 2022/10/26 10:28:29 by afrolova         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:05:55 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -53,26 +53,26 @@ enum {
 	ARROW_DOWN = 125,
 	ARROW_UP = 126,
 };
-
-typedef struct	s_points
+typedef struct s_points
 {
 	double	r;
 	double	i;
-}				t_points;
+}	t_points;
 
-typedef struct	s_point
+typedef struct s_point
 {
 	double	x;
 	double	y;
-}				t_point;
+}	t_point;
 
-typedef	struct	s_pixel
+typedef struct s_pixel
 {
 	int	x;
 	int	y;
-}				t_pixel;
+}	t_pixel;
 
-typedef struct	s_data {
+typedef struct s_data
+{
 	void		*mlx;
 	void		*win;
 	char		*name;
@@ -90,7 +90,7 @@ typedef struct	s_data {
 	t_point		tmp;
 	double		zoom;
 	double		x_new;
-}				t_data;
+}	t_data;
 
 //mandelbrot.c
 void	init_mandelbrot(t_data *data);
@@ -113,8 +113,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		gradient(int startcolor, int endcolor, int len, int i);
 int		ft_round(double num);
 
-
-
 //main.c
 int		main(int argc, char **argv);
 int		init_program(char **argv);
@@ -125,7 +123,7 @@ int		end_all(t_data *data);
 int		check_errors(int argc, char **argv);
 
 //init.c
-void	init_fractal (t_data *data, char **argv);
+void	init_fractal(t_data *data, char **argv);
 int		create_window(t_data *data);
 double	ft_atod(char *str, double sign);
 
@@ -134,13 +132,11 @@ double	ft_atod(char *str, double sign);
 int		key_enter(int key, t_data *data);
 
 //mouse.c
-
-//int		mouse_release(int key, int x, int y, t_data *data);
 int		mouse_press(int key, int x, int y, t_data *data);
-//int		mouse_move(int x, int y, t_data *data);
+
 //logs.c
 void	invalid_input(void);
 void	invalid_julia_param_input(void);
-void	view_options();
+void	view_options(void);
 
 #endif
