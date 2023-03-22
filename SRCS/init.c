@@ -6,14 +6,13 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:58:14 by afrolova          #+#    #+#             */
-/*   Updated: 2023/03/22 16:53:47 by afrolova         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:14:06 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractol.h"
 
 void	init_fractal(t_data *data, char **argv)
 {
-	ft_printf("INIT FRACTAL\n");
 	if (!strncmp(data->name, "mandelbrot", 0xFFFFFFFF))
 	{
 		(void)argv;

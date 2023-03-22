@@ -6,7 +6,7 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 23:37:55 by afrolova          #+#    #+#             */
-/*   Updated: 2023/03/22 16:53:42 by afrolova         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:20:48 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../INC/fractol.h"
