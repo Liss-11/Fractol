@@ -6,7 +6,7 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:13:25 by afrolova          #+#    #+#             */
-/*   Updated: 2023/03/22 16:53:57 by afrolova         ###   ########.fr       */
+/*   Updated: 2023/06/01 15:08:45 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractol.h"
@@ -40,11 +40,7 @@ int	key_enter(int key, t_data *data)
 	else if (key == ARROW_RIGHT)
 		data->center.x -= .2 / data->zoom;
 	else
-	{
-		ft_printf("key %d", key);
 		key_enter1(key, data);
-	}
 	drawer(data);
-	ft_printf("key %d", key);
 	return (0);
 }

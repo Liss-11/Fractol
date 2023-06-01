@@ -6,7 +6,7 @@
 /*   By: afrolova <afrolova@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 15:58:45 by afrolova          #+#    #+#             */
-/*   Updated: 2023/03/22 17:23:47 by afrolova         ###   ########.fr       */
+/*   Updated: 2023/06/01 15:08:09 by afrolova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractol.h"
@@ -53,7 +53,7 @@ int	end_all(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->img);
 	mlx_destroy_window(data->mlx, data->win);
-	free(data->mlx);
+	//free(data->mlx);
 	exit(EXIT_FAILURE);
 	return (0);
 }
