@@ -7,6 +7,8 @@
   <div>proyecto desarrollado para 42_Barcelona</div>
 </div>
 
+<br>
+
 <img src="images/Fractol1.png"></img>
 
 <img src="images/Fractol2.png"></img>
