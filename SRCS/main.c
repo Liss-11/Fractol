@@ -32,7 +32,7 @@ int	init_program(char **argv)
 		data.name = 'j';
 	else if (!strncmp(argv[1], "m", 0xFFFFFFFF))
 		data.name = 'm';
-	ft_printf("Init programm, the name is: %s\n", data.name);
+	ft_printf("Init programm, the name is: %c\n", data.name);
 
 	init_fractal(&data, argv);
 	if (!create_window(&data))
@@ -53,8 +53,6 @@ int	execute_program(t_data *data)
 
 
 //	mlx_loop_hook(data->win, mouse_detector, data);
-
-
 
 	mlx_loop(data->mlx);
 	mlx_destroy_image(data->mlx, data->img);

@@ -13,7 +13,7 @@
 
 static int	check_if_mandel(char *argv)
 {
-	if (!strncmp(argv, "m", 0xFFFFFFFF))
+	if (*argv == 'm')
 		return (1);
 	return (0);
 }
@@ -43,7 +43,7 @@ static int	check_params_julia(char *argv)
 
 static int	check_if_julia(char *argv)
 {
-	if (!strncmp(argv, "j", 0xFFFFFFFF))
+	if (*argv == 'j')
 		return (1);
 	return (0);
 }
